@@ -1,4 +1,4 @@
-﻿namespace Neolution.Utilities.Validation
+﻿namespace Neolution.Utilities.Mail
 {
     using System.Net.Mail;
 
