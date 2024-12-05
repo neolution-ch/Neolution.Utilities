@@ -10,6 +10,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - This CHANGELOG file to document changes to the project.
-- Basic project structure and utility classes.
+- Basic project structure and first few utility classes.
 
 
