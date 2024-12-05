@@ -1,0 +1,78 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      versioning_phase:
+        type: choice
+        description: Versioning Phase
+        default: stable
+        options:
+          - alpha
+          - beta
+          - rc
+          - stable
+
+      bump_version_number:
+        type: choice
+        description: Bump Version Number
+        default: consecutive
+        options:
+          - consecutive
+          - patch
+          - minor
+          - major
+
+      is_dry_run:
+        type: boolean
+        description: Dry Run
+
+jobs:
+  release-it:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: tibdex/github-app-token@v2
+        id: generate-token
+        with:
+          app_id: ${{ secrets.RELEASE_BOT_APP_ID }}
+          private_key: ${{ secrets.RELEASE_BOT_APP_PRIVATE_KEY }}
+
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+          # we need everything so release-it can compare the current version with the latest tag
+          fetch-depth: 0
+
+      - name: initialize mandatory git config
+        run: |
+          git config user.name "GitHub Release Bot"
+          git config user.email release-bot@neolution.ch
+
+      - name: install release-it with plugins
+        run: npm install -g release-it @release-it/keep-a-changelog
+
+      - name: run release-it
+        run: |
+          params=()
+
+          if [[ ${{ github.event.inputs.bump_version_number }} != "consecutive" ]]; then
+              params+=(${{ github.event.inputs.bump_version_number }})
+          fi
+
+          if [[ ${{ github.event.inputs.versioning_phase }} != "stable" ]]; then
+              params+=(--preRelease=${{ github.event.inputs.versioning_phase }})
+              params+=(--plugins.@release-it/keep-a-changelog.keepUnreleased)
+              params+=(--no-plugins.@release-it/keep-a-changelog.strictLatest)
+          fi
+
+          if [[ ${{ github.event.inputs.is_dry_run }} == "true" ]]; then
+              params+=(--dry-run)
+          fi
+
+          params+=(--ci)
+
+          echo "command: release-it ${params[@]}"
+          release-it "${params[@]}"
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
