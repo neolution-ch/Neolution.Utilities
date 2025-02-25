@@ -30,3 +30,63 @@ jobs:
 
     - name: Test
       run: dotnet test --no-build --verbosity normal --configuration '${{ env.BUILD_CONFIGURATION }}'
+      
+  unit-tests:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: docker build -t unit-test-runner -f ./docker/UnitTestRunner/Dockerfile .
+
+      - name: "Run the unit tests"
+        run: |
+          docker run --name unit-test-runner unit-test-runner
+          docker cp unit-test-runner:testresults .
+
+      - name: Test Reporter
+        uses: dorny/test-reporter@v1.5.0
+        if: always()
+        with:
+          name: Report Unit Tests
+          path: ./testresults/*.trx
+          reporter: dotnet-trx
+
+      - name: cobertura-report
+        uses: 5monkeys/cobertura-action@v13
+        with:
+          path: ./testresults/**/coverage.cobertura.xml
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          minimum_coverage: 0
+          only_changed_files: true
+
+      # required for the merge reports job
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      # merge is required to get a single coverage report for the summary report because
+      # if you have like 3 UnitTest projects in the solution it will generate one file per project
+      # and dependencies like Core or Infrastructure will be part of each file. This job merges them.
+      # https://learn.microsoft.com/en-us/dotnet/core/additional-tools/dotnet-coverage
+      - name: Merge coverage reports
+        working-directory: ./testresults
+        run: |
+          dotnet tool install --global dotnet-coverage --ignore-failed-sources
+          dotnet-coverage merge -o coverage-merged.xml -f cobertura -r coverage.cobertura.xml
+
+      - name: Code Coverage Summary Report
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        with:
+          filename: ./testresults/coverage-merged.xml
+          format: markdown
+          output: both
+
+        # this belongs to the cover summary report
+      - name: Add Coverage PR Comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: github.event_name == 'pull_request'
+        with:
+          recreate: true
+          path: code-coverage-results.md
+
