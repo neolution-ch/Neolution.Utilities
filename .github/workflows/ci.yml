@@ -30,7 +30,7 @@ jobs:
 
     - name: Test
       run: dotnet test --no-build --verbosity normal --configuration '${{ env.BUILD_CONFIGURATION }}'
-      
+
   unit-tests:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
@@ -57,7 +57,7 @@ jobs:
         with:
           path: ./testresults/**/coverage.cobertura.xml
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          minimum_coverage: 0
+          minimum_coverage: 100 # Intentionally high for now, can be adjusted later as project matures
           only_changed_files: true
 
       # required for the merge reports job
