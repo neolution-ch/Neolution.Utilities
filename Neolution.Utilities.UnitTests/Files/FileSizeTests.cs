@@ -2,6 +2,7 @@ namespace Neolution.Utilities.UnitTests.Files
 {
     using Neolution.Utilities.Files;
     using Shouldly;
+    using Xunit;
 
     public class FileSizeTests
     {
