@@ -6,7 +6,7 @@ on:
 
 env:
   ARTIFACTS_FEED_URL: https://api.nuget.org/v3/index.json
-  PROJECT_NAME: "Neolution.DotNet.Console"
+  PROJECT_NAME: "Neolution.Utilities"
   BUILD_CONFIGURATION: "Release"
   DOTNET_VERSION: "8.x"
 
@@ -35,6 +35,6 @@ jobs:
           dotnet pack "${{ env.PROJECT_NAME }}\${{ env.PROJECT_NAME }}.csproj" --configuration ${{ env.BUILD_CONFIGURATION }} --no-build -p:PackageVersion=$NUGET_VERSION
 
       - name: Push NuGet package
-        run: dotnet nuget push --skip-duplicate -k $NUGET_AUTH_TOKEN **/bin/${{ env.BUILD_CONFIGURATION }}/*.nupkg
+        run: dotnet nuget push -k $NUGET_AUTH_TOKEN **/bin/${{ env.BUILD_CONFIGURATION }}/*.nupkg
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY_NEOLUTION }}
