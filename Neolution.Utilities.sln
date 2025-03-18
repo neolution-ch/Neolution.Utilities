@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflow", "workflow", "{50
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neolution.Utilities.UnitTests", "Neolution.Utilities.UnitTests\Neolution.Utilities.UnitTests.csproj", "{C3544982-2C75-425C-AAC6-360728826B7F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neolution.Utilities.AspNetCore", "Neolution.Utilities.AspNetCore\Neolution.Utilities.AspNetCore.csproj", "{3F391AE5-330B-48B3-A76D-F272225958EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neolution.Utilities.AspNetCore.UnitTests", "Neolution.Utilities.AspNetCore.UnitTests\Neolution.Utilities.AspNetCore.UnitTests.csproj", "{C934790B-883D-4A77-91BB-FF62407401AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{C3544982-2C75-425C-AAC6-360728826B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3544982-2C75-425C-AAC6-360728826B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3544982-2C75-425C-AAC6-360728826B7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F391AE5-330B-48B3-A76D-F272225958EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F391AE5-330B-48B3-A76D-F272225958EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F391AE5-330B-48B3-A76D-F272225958EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F391AE5-330B-48B3-A76D-F272225958EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C934790B-883D-4A77-91BB-FF62407401AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C934790B-883D-4A77-91BB-FF62407401AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C934790B-883D-4A77-91BB-FF62407401AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C934790B-883D-4A77-91BB-FF62407401AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
