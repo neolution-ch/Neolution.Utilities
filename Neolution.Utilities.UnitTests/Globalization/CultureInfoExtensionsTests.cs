@@ -1,10 +1,13 @@
-namespace Neolution.Utilities.UnitTests.Globalization
+﻿namespace Neolution.Utilities.UnitTests.Globalization
 {
     using System.Globalization;
     using Neolution.Utilities.Globalization;
     using Shouldly;
     using Xunit;
 
+    /// <summary>
+    /// Unit tests for the <see cref="CultureInfoExtensions"/> class.
+    /// </summary>
     public class CultureInfoExtensionsTests
     {
         /// <summary>
