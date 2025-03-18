@@ -1,9 +1,12 @@
-namespace Neolution.Utilities.UnitTests.Files
+﻿namespace Neolution.Utilities.UnitTests.Files
 {
     using Neolution.Utilities.Files;
     using Shouldly;
     using Xunit;
 
+    /// <summary>
+    /// Unit tests for the <see cref="FileSize"/> class.
+    /// </summary>
     public class FileSizeTests
     {
         /// <summary>

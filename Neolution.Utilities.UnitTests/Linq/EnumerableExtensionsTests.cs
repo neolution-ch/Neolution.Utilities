@@ -1,10 +1,13 @@
-namespace Neolution.Utilities.UnitTests.Linq
+﻿namespace Neolution.Utilities.UnitTests.Linq
 {
     using System.Collections.Generic;
     using Neolution.Utilities.Linq;
     using Shouldly;
     using Xunit;
 
+    /// <summary>
+    /// Unit tests for the <see cref="EnumerableExtensions"/> class.
+    /// </summary>
     public class EnumerableExtensionsTests
     {
         /// <summary>
