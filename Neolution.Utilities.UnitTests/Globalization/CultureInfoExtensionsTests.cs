@@ -5,6 +5,9 @@ namespace Neolution.Utilities.UnitTests.Globalization
     using Shouldly;
     using Xunit;
 
+    /// <summary>
+    /// Unit tests for the <see cref="CultureInfoExtensions"/> class.
+    /// </summary>
     public class CultureInfoExtensionsTests
     {
         /// <summary>
