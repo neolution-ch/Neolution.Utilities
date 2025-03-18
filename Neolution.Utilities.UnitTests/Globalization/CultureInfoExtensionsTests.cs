@@ -1,4 +1,4 @@
-namespace Neolution.Utilities.UnitTests.Globalization
+﻿namespace Neolution.Utilities.UnitTests.Globalization
 {
     using System.Globalization;
     using Neolution.Utilities.Globalization;
