@@ -1,4 +1,4 @@
-name: Publish NuGet package
+name: Publish NuGet packages
 
 on:
   release:
@@ -6,9 +6,9 @@ on:
 
 env:
   ARTIFACTS_FEED_URL: https://api.nuget.org/v3/index.json
-  PROJECT_NAME: "Neolution.Utilities"
   BUILD_CONFIGURATION: "Release"
   DOTNET_VERSION: "8.x"
+  PACKABLE_PROJECTS: "Neolution.Utilities,Neolution.Utilities.AspNetCore"
 
 jobs:
   build-pack-push:
@@ -28,13 +28,18 @@ jobs:
       - name: Determine version for NuGet package
         run: echo "NUGET_VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
-      - name: Build and pack
+      - name: Restore, build, and pack all projects
         run: |
-          dotnet restore
-          dotnet build --configuration ${{ env.BUILD_CONFIGURATION }} -p:Version=$NUGET_VERSION
-          dotnet pack "${{ env.PROJECT_NAME }}\${{ env.PROJECT_NAME }}.csproj" --configuration ${{ env.BUILD_CONFIGURATION }} --no-build -p:PackageVersion=$NUGET_VERSION
+          IFS=',' read -ra PROJECTS <<< "$PACKABLE_PROJECTS"
+          for proj in "${PROJECTS[@]}"; do
+            proj_path="$proj/$proj.csproj"
+            echo "Processing $proj_path"
+            dotnet restore "$proj_path"
+            dotnet build "$proj_path" --configuration ${{ env.BUILD_CONFIGURATION }} -p:Version=$NUGET_VERSION
+            dotnet pack "$proj_path" --configuration ${{ env.BUILD_CONFIGURATION }} --no-build -p:PackageVersion=$NUGET_VERSION
+          done
 
-      - name: Push NuGet package
+      - name: Push NuGet packages
         run: dotnet nuget push -k $NUGET_AUTH_TOKEN **/bin/${{ env.BUILD_CONFIGURATION }}/*.nupkg
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY_NEOLUTION }}
