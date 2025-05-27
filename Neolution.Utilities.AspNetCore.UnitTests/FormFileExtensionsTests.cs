@@ -1,4 +1,4 @@
-namespace Neolution.Utilities.AspNetCore.UnitTests
+﻿namespace Neolution.Utilities.AspNetCore.UnitTests
 {
     using System.IO;
     using System.Text;
@@ -27,9 +27,17 @@ namespace Neolution.Utilities.AspNetCore.UnitTests
             const string content = "Hello, World!";
             var contentBytes = Encoding.UTF8.GetBytes(content);
             var formFile = fixture.Create<IFormFile>();
-            var stream = new MemoryStream(contentBytes);
-            formFile.OpenReadStream().Returns(stream);
             var cancellationToken = CancellationToken.None;
+
+            // Mock CopyToAsync to write the contentBytes to the provided stream
+            formFile
+                .CopyToAsync(Arg.Any<Stream>(), cancellationToken)
+                .Returns(callInfo =>
+                {
+                    var stream = callInfo.Arg<Stream>();
+                    stream.Write(contentBytes, 0, contentBytes.Length);
+                    return Task.CompletedTask;
+                });
 
             // Act
             var result = await formFile.GetByteArrayAsync(cancellationToken);

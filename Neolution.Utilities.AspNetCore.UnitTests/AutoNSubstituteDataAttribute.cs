@@ -1,4 +1,4 @@
-namespace Neolution.Utilities.AspNetCore.UnitTests
+﻿namespace Neolution.Utilities.AspNetCore.UnitTests
 {
     using AutoFixture;
     using AutoFixture.AutoNSubstitute;

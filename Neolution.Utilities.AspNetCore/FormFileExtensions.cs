@@ -23,15 +23,6 @@
             {
                 using var stream = new MemoryStream();
                 await formFile.CopyToAsync(stream, cancellationToken).ConfigureAwait(false);
-
-                var buffer = new byte[16 * 1024];
-                int read;
-                while ((read = await stream.ReadAsync(buffer.AsMemory(0, buffer.Length), cancellationToken).ConfigureAwait(false)) > 0)
-                {
-                    stream.Write(buffer, 0, read);
-                }
-
-                stream.Position = 0;
                 return stream.ToArray();
             }
         }
