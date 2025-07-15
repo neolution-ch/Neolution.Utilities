@@ -1,4 +1,4 @@
-﻿namespace Neolution.Utilities.EntityFrameworkCore.Interfaces;
+﻿namespace Neolution.Utilities.EntityFrameworkCore.Abstractions;
 
 /// <summary>
 /// The interface for sortable entities.

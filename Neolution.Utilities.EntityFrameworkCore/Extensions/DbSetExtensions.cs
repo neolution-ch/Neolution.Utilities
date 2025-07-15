@@ -2,7 +2,7 @@
 
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using Neolution.Utilities.EntityFrameworkCore.Interfaces;
+using Neolution.Utilities.EntityFrameworkCore.Abstractions;
 
 /// <summary>
 /// The DbSet extensions.
@@ -16,6 +16,11 @@ public static class DbSetExtensions
     /// <param name="dbSet">The database set.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The next sort order</returns>
+    /// <remarks>
+    /// Concurrency note: This method has inherent race conditions in high-concurrency scenarios where multiple
+    /// operations might calculate the same next sort order. Consider using database sequences, unique constraints
+    /// with retry logic, or application-level coordination for high-concurrency use cases.
+    /// </remarks>
     public static Task<int> GetNextSortOrderAsync<T>(this DbSet<T> dbSet, CancellationToken cancellationToken)
         where T : class, ISortableEntity
     {
@@ -31,6 +36,11 @@ public static class DbSetExtensions
     /// <param name="predicate">The predicate.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The next sort order</returns>
+    /// <remarks>
+    /// Concurrency note: This method has inherent race conditions in high-concurrency scenarios where multiple
+    /// operations might calculate the same next sort order. Consider using database sequences, unique constraints
+    /// with retry logic, or application-level coordination for high-concurrency use cases.
+    /// </remarks>
     public static Task<int> GetNextSortOrderAsync<T>(this DbSet<T> dbSet, Expression<Func<T, bool>> predicate, CancellationToken cancellationToken)
         where T : class, ISortableEntity
     {

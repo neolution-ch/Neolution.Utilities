@@ -1,7 +1,7 @@
 ﻿namespace Neolution.Utilities.EntityFrameworkCore.UnitTests;
 
 using Microsoft.EntityFrameworkCore;
-using Neolution.Utilities.EntityFrameworkCore.Interfaces;
+using Neolution.Utilities.EntityFrameworkCore.Abstractions;
 
 /// <summary>
 /// The test database context for unit tests.
