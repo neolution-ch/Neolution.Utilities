@@ -10,7 +10,7 @@ using Neolution.Utilities.EntityFrameworkCore.Abstractions;
 public static class DbSetExtensions
 {
     /// <summary>
-    /// Gets the next sort order asynchronous.
+    /// Gets the next sort order asynchronously.
     /// </summary>
     /// <typeparam name="T">The entity type</typeparam>
     /// <param name="dbSet">The database set.</param>
@@ -29,7 +29,7 @@ public static class DbSetExtensions
     }
 
     /// <summary>
-    /// Gets the next sort order asynchronous.
+    /// Gets the next sort order asynchronously.
     /// </summary>
     /// <typeparam name="T">The entity type</typeparam>
     /// <param name="dbSet">The database set.</param>
@@ -50,7 +50,7 @@ public static class DbSetExtensions
     }
 
     /// <summary>
-    /// Gets the next sort order internal asynchronous.
+    /// Gets the next sort order asynchronously (internal).
     /// </summary>
     /// <typeparam name="T">The entity type</typeparam>
     /// <param name="dbSet">The database set.</param>
