@@ -24,7 +24,7 @@ public static class DbSetExtensions
     }
 
     /// <summary>
-    /// Gets the next sort order asynchronous.
+    /// Gets the next sort order asynchronously.
     /// </summary>
     /// <typeparam name="T">The entity type</typeparam>
     /// <param name="dbSet">The database set.</param>
