@@ -23,6 +23,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neolution.Utilities.AspNetC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neolution.Utilities.AspNetCore.UnitTests", "Neolution.Utilities.AspNetCore.UnitTests\Neolution.Utilities.AspNetCore.UnitTests.csproj", "{C934790B-883D-4A77-91BB-FF62407401AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neolution.Utilities.EntityFrameworkCore", "Neolution.Utilities.EntityFrameworkCore\Neolution.Utilities.EntityFrameworkCore.csproj", "{124ABB0D-D94D-AA1F-7525-EFD1F5D6CEF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neolution.Utilities.EntityFrameworkCore.UnitTests", "Neolution.Utilities.EntityFrameworkCore.UnitTests\Neolution.Utilities.EntityFrameworkCore.UnitTests.csproj", "{1E561D8A-957B-1AA8-D0FB-C4BEBC5486A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTestRunner", "UnitTestRunner", "{DCEF46C1-28DA-475B-8F26-E67DC9E21075}"
+	ProjectSection(SolutionItems) = preProject
+		docker\UnitTestRunner\Dockerfile = docker\UnitTestRunner\Dockerfile
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,12 +56,22 @@ Global
 		{C934790B-883D-4A77-91BB-FF62407401AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C934790B-883D-4A77-91BB-FF62407401AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C934790B-883D-4A77-91BB-FF62407401AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{124ABB0D-D94D-AA1F-7525-EFD1F5D6CEF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{124ABB0D-D94D-AA1F-7525-EFD1F5D6CEF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{124ABB0D-D94D-AA1F-7525-EFD1F5D6CEF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{124ABB0D-D94D-AA1F-7525-EFD1F5D6CEF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E561D8A-957B-1AA8-D0FB-C4BEBC5486A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E561D8A-957B-1AA8-D0FB-C4BEBC5486A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E561D8A-957B-1AA8-D0FB-C4BEBC5486A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E561D8A-957B-1AA8-D0FB-C4BEBC5486A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{50F34C93-AF34-480E-852A-FE3A9B421AFA} = {8FFFA751-0701-419F-AD05-74DF0DAF160E}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {8FFFA751-0701-419F-AD05-74DF0DAF160E}
+		{DCEF46C1-28DA-475B-8F26-E67DC9E21075} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FF12985-C3AB-497B-B2A8-DD02604D5957}

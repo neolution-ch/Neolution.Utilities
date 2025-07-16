@@ -8,7 +8,7 @@ env:
   ARTIFACTS_FEED_URL: https://api.nuget.org/v3/index.json
   BUILD_CONFIGURATION: "Release"
   DOTNET_VERSION: "8.x"
-  PACKABLE_PROJECTS: "Neolution.Utilities,Neolution.Utilities.AspNetCore"
+  PACKABLE_PROJECTS: "Neolution.Utilities,Neolution.Utilities.AspNetCore,Neolution.Utilities.EntityFrameworkCore"
 
 jobs:
   build-pack-push:
