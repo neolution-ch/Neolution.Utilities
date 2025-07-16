@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net8.0": {
+      "Neolution.CodeAnalysis": {
+        "type": "Direct",
+        "requested": "[3.2.1, )",
+        "resolved": "3.2.1",
+        "contentHash": "AQDkBJ9e6TrnhpwTtf4KrwlAPBLy77I5XkNey586nN2IFfjk1LVwBwvOcjORD1dSNtEhOf69JQjdmiMf54C90w==",
+        "dependencies": {
+          "SonarAnalyzer.CSharp": "9.20.0.85982",
+          "StyleCop.Analyzers.Unstable": "1.2.0.556"
+        }
+      },
+      "SonarAnalyzer.CSharp": {
+        "type": "Transitive",
+        "resolved": "9.20.0.85982",
+        "contentHash": "c0IYtFg4mYusTafTy0Bs5wev45vRKNShkuoWyQyPMbC6imEFHL7tY/7xbbUJd6JNLYx5vP8wyi2LgiBsMHqb2Q=="
+      },
+      "StyleCop.Analyzers.Unstable": {
+        "type": "Transitive",
+        "resolved": "1.2.0.556",
+        "contentHash": "zvn9Mqs/ox/83cpYPignI8hJEM2A93s2HkHs8HYMOAQW0PkampyoErAiIyKxgTLqbbad29HX/shv/6LGSjPJNQ=="
+      }
+    }
+  }
+}

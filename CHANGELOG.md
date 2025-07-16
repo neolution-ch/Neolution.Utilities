@@ -9,8 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- This CHANGELOG file to document changes to the project.
-- FileSize utility with method to display bytes in a human-readable way
+- `FileSize` utility with method to display bytes in a human-readable way
 - `CultureInfo` extension method to get the language code of a culture
 - `IEnumerable` extension methods
 - `IFormFile` extension method (AspNetCore package only)

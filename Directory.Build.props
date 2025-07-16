@@ -1,0 +1,19 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <Description>This is a collection of utilities that we have created to help with our development process.</Description>
+    <Company>Neolution AG</Company>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/neolution-ch/Neolution.Utilities</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/neolution-ch/Neolution.Utilities</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>dotnet;utilities;extensions;helpers;neolution</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReleaseNotes>See CHANGELOG.md for release notes.</PackageReleaseNotes>
+    <Copyright>Copyright (c) 2025 Neolution AG</Copyright>
+  </PropertyGroup>
+</Project>
