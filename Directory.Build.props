@@ -16,4 +16,9 @@
     <PackageReleaseNotes>See CHANGELOG.md for release notes.</PackageReleaseNotes>
     <Copyright>Copyright (c) 2025 Neolution AG</Copyright>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)\README.md" Pack="true" PackagePath="" />
+    <None Include="$(MSBuildThisFileDirectory)\icon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
 </Project>
