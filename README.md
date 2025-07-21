@@ -19,7 +19,9 @@ Use a namespace that reflects the utility's purpose. Choose names that are speci
 To prevent API pollution and naming conflicts, use static helper classes instead of extension methods for the following types:
 
 - All CLR primitives (`bool`, `byte`, `sbyte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `nint`, `nuint`, `char`, `double`, `float`)
-- Some System .NET types: `string`, `decimal`, `object` and `Enum`.
+- Selected System .NET types: `string`, `decimal`, `object`, and `Enum`
+
+**Exception:** Extension methods that provide custom string representations are permitted, provided they follow the `ToXyzString()` naming convention, where `Xyz` clearly indicates the format or purpose of the output (e.g., `ToCurrencyString()`, `ToHexString()`). This ensures consistency and clarity in API design across the library.
 
 ### Test Coverage
 
