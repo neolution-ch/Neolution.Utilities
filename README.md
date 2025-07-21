@@ -19,7 +19,7 @@ Use a namespace that reflects the utility's purpose. Choose names that are speci
 To prevent API pollution and naming conflicts, use static helper classes instead of extension methods for the following types:
 
 - All CLR primitives (`bool`, `byte`, `sbyte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `nint`, `nuint`, `char`, `double`, `float`)
-- The following System .NET types: `string`, `decimal`, `object`, `Enum`, `DateTime`, `Guid`, and `TimeSpan`.
+- Some System .NET types: `string`, `decimal`, `object` and `Enum`.
 
 ### Test Coverage
 
