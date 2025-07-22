@@ -14,14 +14,16 @@ If you would like to contribute to this project, please submit a pull request.
 
 Use a namespace that reflects the utility's purpose. Choose names that are specific enough to be meaningful but generic enough to accommodate similar utilities in the future.
 
-### Extension Method Restrictions
+### Extension Method Policy
 
-To prevent API pollution and naming conflicts, use static helper classes instead of extension methods for the following types:
+Create utility methods as extension methods by default for discoverability and ease of use.
+
+**Exceptions - Use static helper classes for:**
 
 - All CLR primitives (`bool`, `byte`, `sbyte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `nint`, `nuint`, `char`, `double`, `float`)
-- Selected System .NET types: `string`, `decimal`, `object`, and `Enum`
+- Selected System .NET types: `decimal`, `object`, and `Enum`
 
-**Exception:** Extension methods that provide custom string representations are permitted, provided they follow the `ToXyzString()` naming convention, where `Xyz` clearly indicates the format or purpose of the output (e.g., `ToCurrencyString()`, `ToHexString()`). This ensures consistency and clarity in API design across the library.
+**Exception to the exception:** Custom string representation methods (e.g., `ToCurrencyString()`, `ToHexString()`) are permitted as extension methods on the above types, using the `ToXyzString()` naming convention where `Xyz` describes the output format.
 
 ### Test Coverage
 
