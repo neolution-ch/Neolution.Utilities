@@ -1,7 +1,7 @@
-﻿namespace Neolution.Utilities.UnitTests.Globalization
+﻿namespace Neolution.Utilities.UnitTests.Extensions
 {
     using System.Globalization;
-    using Neolution.Utilities.Globalization;
+    using Neolution.Utilities.Extensions;
     using Shouldly;
     using Xunit;
 

@@ -1,4 +1,4 @@
-﻿namespace Neolution.Utilities.AspNetCore
+﻿namespace Neolution.Utilities.AspNetCore.Extensions
 {
     using Microsoft.AspNetCore.Http;
 
