@@ -1,4 +1,4 @@
-﻿namespace Neolution.Utilities;
+﻿namespace Neolution.Utilities.Extensions;
 
 /// <summary>
 /// String extensions.
@@ -13,7 +13,7 @@ public static class StringExtensions
     /// <returns>The truncated string</returns>
     public static string? Truncate(this string? value, int maxLength)
     {
-        return Truncate(value, maxLength, string.Empty);
+        return value.Truncate(maxLength, string.Empty);
     }
 
     /// <summary>

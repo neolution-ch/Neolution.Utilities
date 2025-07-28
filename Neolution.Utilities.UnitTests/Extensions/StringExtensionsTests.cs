@@ -1,5 +1,6 @@
-﻿namespace Neolution.Utilities.UnitTests;
+﻿namespace Neolution.Utilities.UnitTests.Extensions;
 
+using Neolution.Utilities.Extensions;
 using Xunit;
 
 /// <summary>
