@@ -1,4 +1,4 @@
-﻿namespace Neolution.Utilities.AspNetCore.UnitTests
+﻿namespace Neolution.Utilities.AspNetCore.UnitTests.Extensions
 {
     using System.IO;
     using System.Text;

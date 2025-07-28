@@ -1,4 +1,4 @@
-﻿namespace Neolution.Utilities.UnitTests.Files
+﻿namespace Neolution.Utilities.UnitTests.Helpers
 {
     using Neolution.Utilities.Helpers;
     using Shouldly;

@@ -1,4 +1,4 @@
-﻿namespace Neolution.Utilities.UnitTests.Linq
+﻿namespace Neolution.Utilities.UnitTests.Extensions
 {
     using System.Collections.Generic;
     using Neolution.Utilities.Extensions;
