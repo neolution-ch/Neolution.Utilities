@@ -1,4 +1,4 @@
-﻿namespace Neolution.Utilities.Files
+﻿namespace Neolution.Utilities.Helpers
 {
     /// <summary>
     /// Provides methods to get file sizes in human-readable formats.

@@ -1,4 +1,4 @@
-﻿namespace Neolution.Utilities.AspNetCore.UnitTests
+﻿namespace Neolution.Utilities.AspNetCore.UnitTests.Extensions
 {
     using System.IO;
     using System.Text;
@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using AutoFixture;
     using Microsoft.AspNetCore.Http;
+    using Neolution.Utilities.AspNetCore.Extensions;
     using NSubstitute;
     using Shouldly;
     using Xunit;

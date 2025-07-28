@@ -1,4 +1,4 @@
-﻿namespace Neolution.Utilities.Globalization
+﻿namespace Neolution.Utilities.Extensions
 {
     using System.Globalization;
 
