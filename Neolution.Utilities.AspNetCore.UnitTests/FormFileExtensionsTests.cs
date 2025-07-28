@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using AutoFixture;
     using Microsoft.AspNetCore.Http;
+    using Neolution.Utilities.AspNetCore.Extensions;
     using NSubstitute;
     using Shouldly;
     using Xunit;

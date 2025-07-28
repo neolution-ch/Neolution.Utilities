@@ -6,13 +6,31 @@ This is a collection of utilities that we have created to help with our developm
 
 Add the NuGet package to your project and reference the desired classes in your source code.
 
+## Additional Packages
+
+This library includes specialized packages that extend the core utilities for specific frameworks. These packages are deliberately separated from the base `Neolution.Utilities` package which remains framework-agnostic and dependency-free, ensuring it can be used in any .NET project without forcing unwanted dependencies.
+
 ## Contributing
 
 If you would like to contribute to this project, please submit a pull request.
 
 ### Namespace Organization
 
-Use a namespace that reflects the utility's purpose. Choose names that are specific enough to be meaningful but generic enough to accommodate similar utilities in the future.
+To ensure clear and unambiguous contribution guidelines, organize utilities into the following namespaces based on their structure:
+
+- **`Neolution.Utilities.Extensions`** - for all extension methods
+- **`Neolution.Utilities.Abstractions`** - for interfaces, base classes, and abstractions
+- **`Neolution.Utilities.Helpers`** - for static utility classes
+
+### File Naming Guidelines
+
+- **Extensions**: Always `{Type}Extensions.cs` (e.g., `StringExtensions.cs`)
+- **Abstractions**: Use descriptive names (e.g., `IValidator.cs`, `RetryPolicy.cs`)
+- **Helpers**: Use clear, descriptive names that indicate the class purpose
+
+### Cross-Namespace Dependencies
+
+Extensions can reference Helpers and Abstractions when it makes sense for code reuse and maintainability.
 
 ### Extension Method Policy
 

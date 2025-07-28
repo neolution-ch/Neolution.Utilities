@@ -1,6 +1,6 @@
 ﻿namespace Neolution.Utilities.UnitTests.Files
 {
-    using Neolution.Utilities.Files;
+    using Neolution.Utilities.Helpers;
     using Shouldly;
     using Xunit;
 

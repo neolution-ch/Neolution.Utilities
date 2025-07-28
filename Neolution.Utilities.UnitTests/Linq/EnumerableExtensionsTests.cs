@@ -1,7 +1,7 @@
 ﻿namespace Neolution.Utilities.UnitTests.Linq
 {
     using System.Collections.Generic;
-    using Neolution.Utilities.Linq;
+    using Neolution.Utilities.Extensions;
     using Shouldly;
     using Xunit;
 

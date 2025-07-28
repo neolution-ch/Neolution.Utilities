@@ -1,4 +1,4 @@
-﻿namespace Neolution.Utilities.Linq
+﻿namespace Neolution.Utilities.Extensions
 {
     /// <summary>
     /// IEnumerable extensions
