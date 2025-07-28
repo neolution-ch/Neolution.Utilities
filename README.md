@@ -8,7 +8,7 @@ Add the NuGet package to your project and reference the desired classes in your 
 
 ## Additional Packages
 
-This library includes specialized packages that extend the core utilities for specific frameworks. These packages are deliberately separated from the base `Neolution.Utilities` package which remains framework-agnostic and dependency-free, ensuring it can be used in any .NET project without forcing unwanted dependencies.
+This library includes specialized packages that extend the core utilities for specific frameworks and third-party libraries. These packages are deliberately separated from the base `Neolution.Utilities` package to maintain its framework-agnostic and dependency-free nature, ensuring it can be used in any .NET project without forcing unwanted dependencies.
 
 ## Contributing
 
