@@ -17,6 +17,7 @@ public static class IServiceCollectionExtensions
     public static void AddOptions<TOptions>(this IServiceCollection services, IConfiguration configuration)
         where TOptions : class
     {
+        ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
         services.Configure<TOptions>(configuration.GetSection<TOptions>());
     }
