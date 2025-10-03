@@ -1,4 +1,4 @@
-﻿namespace Neolution.Utilities.AspNetCore.Extensions;
+﻿namespace Neolution.Utilities.Extensions;
 
 using Microsoft.Extensions.Configuration;
 

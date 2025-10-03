@@ -1,4 +1,4 @@
-﻿namespace Neolution.Utilities.AspNetCore.UnitTests.Extensions;
+﻿namespace Neolution.Utilities.UnitTests.Extensions;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <IsPackable>false</IsPackable>
@@ -29,11 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="AutoFixture" />
-    <Using Include="NSubstitute" />
-    <Using Include="Shouldly" />
     <Using Include="Xunit" />
-    <Using Include="Neolution.Utilities.AspNetCore.Extensions" />
   </ItemGroup>
 
 </Project>

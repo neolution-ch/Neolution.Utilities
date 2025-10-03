@@ -30,4 +30,13 @@
     <ProjectReference Include="..\Neolution.Utilities\Neolution.Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="AutoFixture" />
+    <Using Include="NSubstitute" />
+    <Using Include="Shouldly" />
+    <Using Include="Xunit" />
+    <Using Include="Neolution.Utilities.Extensions" />
+    <Using Include="Neolution.Utilities.Helpers" />
+  </ItemGroup>
+
 </Project>
