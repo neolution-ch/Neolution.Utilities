@@ -16,8 +16,12 @@ public static class IConfigurationExtensions
     public static TOptions GetOptions<TOptions>(this IConfiguration config)
     {
         ArgumentNullException.ThrowIfNull(config);
-        return config.GetSection(typeof(TOptions).Name).Get<TOptions>()
-            ?? throw new InvalidOperationException($"Could not find configuration section '{typeof(TOptions).Name}'");
+        var section = config.GetSection(typeof(TOptions).Name);
+        if (!section.Exists())
+        {
+            throw new InvalidOperationException($"Could not find configuration section '{typeof(TOptions).Name}'");
+        }
+        return section.Get<TOptions>();
     }
 
     /// <summary>
