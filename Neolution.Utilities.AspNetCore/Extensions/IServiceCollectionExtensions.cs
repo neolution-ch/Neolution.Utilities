@@ -15,10 +15,11 @@ public static class IServiceCollectionExtensions
     /// <param name="services">The services.</param>
     /// <param name="configuration">The configuration.</param>
     public static void AddOptions<TOptions>(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddOptions<TOptions>(this IServiceCollection services, IConfiguration configuration)
         where TOptions : class
     {
-        ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
         services.Configure<TOptions>(configuration.GetSection<TOptions>());
+        return services;
     }
 }
