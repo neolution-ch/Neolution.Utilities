@@ -12,14 +12,15 @@ public static class IServiceCollectionExtensions
     /// Adds the strongly typed options.
     /// </summary>
     /// <typeparam name="TOptions">The type of the options.</typeparam>
-    /// <param name="services">The services.</param>
+    /// <param name="serviceCollection">The service collection.</param>
     /// <param name="configuration">The configuration.</param>
-    public static void AddOptions<TOptions>(this IServiceCollection services, IConfiguration configuration)
-    public static IServiceCollection AddOptions<TOptions>(this IServiceCollection services, IConfiguration configuration)
+    /// <returns>The service collection</returns>
+    public static IServiceCollection AddOptions<TOptions>(this IServiceCollection serviceCollection, IConfiguration configuration)
         where TOptions : class
     {
+        ArgumentNullException.ThrowIfNull(serviceCollection);
         ArgumentNullException.ThrowIfNull(configuration);
-        services.Configure<TOptions>(configuration.GetSection<TOptions>());
-        return services;
+        serviceCollection.Configure<TOptions>(configuration.GetSection<TOptions>());
+        return serviceCollection;
     }
 }
