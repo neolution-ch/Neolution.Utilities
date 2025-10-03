@@ -10,6 +10,26 @@ using Microsoft.Extensions.Options;
 public class IServiceCollectionExtensionsTests
 {
     /// <summary>
+    /// Test that given the null service collection when add options called then throws argument null exception.
+    /// </summary>
+    [Fact]
+    public void GivenNullServiceCollection_WhenAddOptionsCalled_ThenThrowsArgumentNullException()
+    {
+        // Arrange
+        ServiceCollection? serviceCollection = null;
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(new Dictionary<string, string?> { ["SampleOptions:Name"] = "X" })
+            .Build();
+
+        // Act
+        var act = () => serviceCollection!.AddOptions<SampleOptions>(configuration);
+
+        // Assert
+        var ex = Should.Throw<ArgumentNullException>(act);
+        ex.ParamName.ShouldBe("serviceCollection");
+    }
+
+    /// <summary>
     /// Test that given the null configuration when add options called then throws argument null exception.
     /// </summary>
     [Fact]
@@ -73,6 +93,60 @@ public class IServiceCollectionExtensionsTests
         var options = provider.GetRequiredService<IOptions<SampleOptions>>().Value;
         options.Name.ShouldBeNull();
         options.Level.ShouldBe(0);
+    }
+
+    /// <summary>
+    /// Test that given the service collection when add options called then same instance is returned for fluent chaining.
+    /// </summary>
+    [Fact]
+    public void GivenServiceCollection_WhenAddOptionsCalled_ThenReturnsSameInstance()
+    {
+        // Arrange
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection([])
+            .Build();
+        var services = new ServiceCollection();
+
+        // Act
+        var returned = services.AddOptions<SampleOptions>(configuration);
+
+        // Assert
+        returned.ShouldBeSameAs(services);
+    }
+
+    /// <summary>
+    /// Test that given multiple registrations with different configurations when add options called twice then last registration wins.
+    /// </summary>
+    [Fact]
+    public void GivenMultipleRegistrations_WhenAddOptionsCalledTwice_ThenLastRegistrationWins()
+    {
+        // Arrange
+        var configuration1 = new ConfigurationBuilder()
+            .AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["SampleOptions:Name"] = "First",
+                ["SampleOptions:Level"] = "1",
+            })
+            .Build();
+        var configuration2 = new ConfigurationBuilder()
+            .AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["SampleOptions:Name"] = "Second",
+                ["SampleOptions:Level"] = "2",
+            })
+            .Build();
+
+        var services = new ServiceCollection();
+
+        // Act
+        services.AddOptions<SampleOptions>(configuration1);
+        services.AddOptions<SampleOptions>(configuration2);
+        var provider = services.BuildServiceProvider();
+
+        // Assert
+        var value = provider.GetRequiredService<IOptions<SampleOptions>>().Value;
+        value.Name.ShouldBe("Second");
+        value.Level.ShouldBe(2);
     }
 
     /// <summary>

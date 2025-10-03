@@ -21,7 +21,8 @@ public static class IConfigurationExtensions
         {
             throw new InvalidOperationException($"Could not find configuration section '{typeof(TOptions).Name}'");
         }
-        return section.Get<TOptions>();
+
+        return section.Get<TOptions>() ?? throw new InvalidOperationException($"Could not create '{typeof(TOptions).Name}'");
     }
 
     /// <summary>
