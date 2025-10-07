@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `FileSize` utility with method to display bytes in a human-readable way
 - `CultureInfo` extension method to get the language code of a culture
 - `IEnumerable` extension methods
+- `IConfiguration` extension methods
+- `IServiceCollection` extension methods
 - `String` extension methods
 - `IFormFile` extension method (AspNetCore package only)
 - `DbSet` extension methods for ISortableEntity interface (EntityFrameworkCore package only)

@@ -12,6 +12,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
     <PackageReference Include="Neolution.CodeAnalysis.TestsRuleset" Version="3.2.1">
       <PrivateAssets>all</PrivateAssets>
@@ -28,6 +30,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Neolution.Utilities\Neolution.Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="AutoFixture" />
+    <Using Include="NSubstitute" />
+    <Using Include="Shouldly" />
+    <Using Include="Xunit" />
+    <Using Include="Neolution.Utilities.Extensions" />
+    <Using Include="Neolution.Utilities.Helpers" />
   </ItemGroup>
 
 </Project>
