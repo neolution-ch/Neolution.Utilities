@@ -96,7 +96,7 @@ public class DateTimeExtensionsTests
     /// <summary>
     /// Gets the test data for <see cref="GivenTargetAndRange_WhenIsInRangeCalled_ThenReturnsExpected"/> method.
     /// </summary>
-    [SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1201:Elements should appear in the correct order", Justification = "It's better to have test data beside the test method")]
+    [SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1201:Elements should appear in the correct order", Justification = "It's better to have test data next to the test method")]
     public static TheoryData<DateTime, DateTime, DateTime, bool> GivenTargetAndRange_WhenIsInRangeCalled_ThenReturnsExpected_TestData => new()
     {
         {
