@@ -26,7 +26,7 @@ public static class DateTimeExtensions
     /// <c>true</c> if the time is midnight according to the <paramref name="ignoreSeconds"/> rule; otherwise <c>false</c>.
     /// </returns>
     public static bool IsMidnight(this DateTime dateTime, bool ignoreSeconds)
-        => dateTime.Hour == 0 && dateTime.Minute == 0 && (ignoreSeconds || dateTime.Second == 0);
+        => ignoreSeconds ? dateTime.Hour == 0 && dateTime.Minute == 0 : dateTime.TimeOfDay.Ticks == 0;
 
     /// <summary>
     /// Determines whether the specified <see cref="DateTime"/> value is the end of the month.
