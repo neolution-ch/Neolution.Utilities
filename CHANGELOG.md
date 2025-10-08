@@ -14,5 +14,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `IEnumerable` extension methods
 - `IConfiguration` extension methods
 - `IServiceCollection` extension methods
+- `String` extension methods
 - `IFormFile` extension method (AspNetCore package only)
 - `DbSet` extension methods for ISortableEntity interface (EntityFrameworkCore package only)
