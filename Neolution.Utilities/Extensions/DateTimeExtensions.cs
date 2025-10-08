@@ -1,7 +1,5 @@
 ﻿namespace Neolution.Utilities.Extensions;
 
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
 /// <summary>
 /// The DateTime extension methods.
 /// </summary>
