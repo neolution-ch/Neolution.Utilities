@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-05-05
+
 ### Added
 
 - `FileSize` utility with method to display bytes in a human-readable way
@@ -19,3 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `StringBuilder` extension methods
 - `IFormFile` extension method (AspNetCore package only)
 - `DbSet` extension methods for ISortableEntity interface (EntityFrameworkCore package only)
+
+[Unreleased]: https://github.com/neolution-ch/Neolution.Utilities/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/neolution-ch/Neolution.Utilities/compare/v1.0.0-rc.1...v1.0.0
