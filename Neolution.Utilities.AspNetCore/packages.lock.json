@@ -1,12 +1,12 @@
 {
   "version": 1,
   "dependencies": {
-    "net8.0": {
+    "net10.0": {
       "Neolution.CodeAnalysis": {
         "type": "Direct",
-        "requested": "[3.2.1, )",
-        "resolved": "3.2.1",
-        "contentHash": "AQDkBJ9e6TrnhpwTtf4KrwlAPBLy77I5XkNey586nN2IFfjk1LVwBwvOcjORD1dSNtEhOf69JQjdmiMf54C90w==",
+        "requested": "[3.2.2, )",
+        "resolved": "3.2.2",
+        "contentHash": "9eBWPh7DNlBje/vH1q5Z4Q5FjwahYavPE2NsJO78IRcQ0xDrhor2FY8DxLA26BsweMqn4Ej0cN5dnyFexjl+ww==",
         "dependencies": {
           "SonarAnalyzer.CSharp": "9.20.0.85982",
           "StyleCop.Analyzers.Unstable": "1.2.0.556"

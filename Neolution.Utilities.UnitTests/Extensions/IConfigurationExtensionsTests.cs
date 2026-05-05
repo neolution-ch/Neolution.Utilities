@@ -108,7 +108,7 @@ public class IConfigurationExtensionsTests
 
         // Assert
         var ex = Should.Throw<InvalidOperationException>(act);
-        ex.Message.ShouldBe("Failed to convert configuration value at 'SampleOptions:Level' to type 'System.Int32'.");
+        ex.Message.ShouldBe("Failed to convert configuration value 'not-an-int' at 'SampleOptions:Level' to type 'System.Int32'.");
     }
 
     /// <summary>
