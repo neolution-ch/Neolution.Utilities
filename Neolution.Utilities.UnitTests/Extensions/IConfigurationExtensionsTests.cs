@@ -44,6 +44,28 @@ public class IConfigurationExtensionsTests
     }
 
     /// <summary>
+    /// Test that given the null section when get options called then throws invalid operation exception.
+    /// </summary>
+    [Fact]
+    public void GivenNullSection_WhenGetOptionsCalled_ThenThrowsInvalidOperationException()
+    {
+        // Arrange
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["SampleOptions"] = "wrong",
+            })
+            .Build();
+
+        // Act
+        var act = () => configuration.GetOptions<SampleOptions>();
+
+        // Assert
+        var ex = Should.Throw<InvalidOperationException>(act);
+        ex.Message.ShouldBe("Could not create 'SampleOptions'");
+    }
+
+    /// <summary>
     /// Test that given the valid section when get options called then binds and returns options.
     /// </summary>
     [Fact]
@@ -108,7 +130,7 @@ public class IConfigurationExtensionsTests
 
         // Assert
         var ex = Should.Throw<InvalidOperationException>(act);
-        ex.Message.ShouldBe("Failed to convert configuration value at 'SampleOptions:Level' to type 'System.Int32'.");
+        ex.Message.ShouldBe("Failed to convert configuration value 'not-an-int' at 'SampleOptions:Level' to type 'System.Int32'.");
     }
 
     /// <summary>

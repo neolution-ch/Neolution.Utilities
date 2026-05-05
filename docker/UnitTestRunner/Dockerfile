@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 
 # Install Timezone data
 # RUN apk add --update tzdata
@@ -16,8 +16,7 @@ WORKDIR /src
 # Copy all the code
 COPY . .
 
-RUN for p in $(find . -name *.UnitTests.csproj); do dotnet restore --locked-mode $p; done 
-RUN for p in $(find . -name *.UnitTests.csproj); do dotnet build -c Release $p; done 
-RUN ls -l
+RUN set -e && for p in $(find . -name *.UnitTests.csproj); do dotnet restore --locked-mode $p; done
+RUN set -e && for p in $(find . -name *.UnitTests.csproj); do dotnet build -c Release $p; done
 
-ENTRYPOINT ["dotnet", "test", "-c", "Release", "--no-build", "--results-directory", "/testresults", "--logger", "trx", "--collect:\"XPlat Code Coverage\""]
+ENTRYPOINT ["dotnet", "test", "-c", "Release", "--no-build", "--results-directory", "/testresults", "--logger", "trx", "--collect", "XPlat Code Coverage"]
