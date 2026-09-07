@@ -37,7 +37,7 @@ public static class IServiceCollectionExtensions
     {
         ArgumentNullException.ThrowIfNull(serviceCollection);
         ArgumentNullException.ThrowIfNull(configuration);
-        ArgumentNullException.ThrowIfNullOrWhiteSpace(sectionName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(sectionName);
         serviceCollection.Configure<TOptions>(configuration.GetSection(sectionName));
         return serviceCollection;
     }
