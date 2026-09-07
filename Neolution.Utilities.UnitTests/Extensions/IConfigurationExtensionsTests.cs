@@ -232,6 +232,23 @@ public class IConfigurationExtensionsTests
     }
 
     /// <summary>
+    /// Test that given the null configuration when get value called then throws argument null exception.
+    /// </summary>
+    [Fact]
+    public void GivenNullConfiguration_WhenGetValueCalled_ThenThrowsArgumentNullException()
+    {
+        // Arrange
+        IConfiguration? configuration = null;
+
+        // Act
+        var act = () => configuration!.GetValue<string, AppSettingKeys>(AppSettingKeys.TestStringKey);
+
+        // Assert
+        var ex = Should.Throw<ArgumentNullException>(act);
+        ex.ParamName.ShouldBe("config");
+    }
+
+    /// <summary>
     /// Gets the value should return correct value when key exists.
     /// </summary>
     [Fact]
