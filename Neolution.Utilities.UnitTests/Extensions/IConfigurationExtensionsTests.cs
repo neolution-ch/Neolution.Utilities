@@ -252,7 +252,7 @@ public class IConfigurationExtensionsTests
     /// Gets the value should return correct value when key exists.
     /// </summary>
     [Fact]
-    public void GetValue_ShouldReturnCorrectValue_WhenKeyExists()
+    public void GivenConfigurationWithExistingKeys_WhenGetValueCalled_ThenReturnsValues()
     {
         // Arrange
         var configuration = new ConfigurationBuilder()
