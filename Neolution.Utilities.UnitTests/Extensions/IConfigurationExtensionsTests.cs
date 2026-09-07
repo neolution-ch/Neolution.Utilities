@@ -8,6 +8,22 @@ using Microsoft.Extensions.Configuration;
 public class IConfigurationExtensionsTests
 {
     /// <summary>
+    /// The same enum used for testing.
+    /// </summary>
+    public enum AppSettingKeys
+    {
+        /// <summary>
+        /// The test string key
+        /// </summary>
+        TestStringKey,
+
+        /// <summary>
+        /// The test int key
+        /// </summary>
+        TestIntKey,
+    }
+
+    /// <summary>
     /// Test that given the null configuration when get options called then throws argument null exception.
     /// </summary>
     [Fact]
@@ -213,6 +229,30 @@ public class IConfigurationExtensionsTests
         // Assert
         section.Key.ShouldBe("SampleOptions");
         section.Exists().ShouldBeFalse();
+    }
+
+    /// <summary>
+    /// Gets the value should return correct value when key exists.
+    /// </summary>
+    [Fact]
+    public void GetValue_ShouldReturnCorrectValue_WhenKeyExists()
+    {
+        // Arrange
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["TestStringKey"] = "TestValue",
+                ["TestIntKey"] = "7",
+            })
+            .Build();
+
+        // Act
+        var value = configuration.GetValue<string, AppSettingKeys>(AppSettingKeys.TestStringKey);
+        var intValue = configuration.GetValue<int, AppSettingKeys>(AppSettingKeys.TestIntKey);
+
+        // Assert
+        value.ShouldBe("TestValue");
+        intValue.ShouldBe(7);
     }
 
     /// <summary>
