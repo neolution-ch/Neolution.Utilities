@@ -176,6 +176,46 @@ public class IServiceCollectionExtensionsTests
     }
 
     /// <summary>
+    /// Test that given the null section name when add options with section name called then throws argument null exception.
+    /// </summary>
+    [Fact]
+    public void GivenNullSectionName_WhenAddOptionsWithSectionNameCalled_ThenThrowsArgumentNullException()
+    {
+        // Arrange
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection([])
+            .Build();
+        var serviceCollection = new ServiceCollection();
+
+        // Act
+        var act = () => serviceCollection.AddOptions<SampleOptions>(configuration, null!);
+
+        // Assert
+        var ex = Should.Throw<ArgumentNullException>(act);
+        ex.ParamName.ShouldBe("sectionName");
+    }
+
+    /// <summary>
+    /// Test that given the whitespace section name when add options with section name called then throws argument exception.
+    /// </summary>
+    [Fact]
+    public void GivenWhitespaceSectionName_WhenAddOptionsWithSectionNameCalled_ThenThrowsArgumentException()
+    {
+        // Arrange
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection([])
+            .Build();
+        var serviceCollection = new ServiceCollection();
+
+        // Act
+        var act = () => serviceCollection.AddOptions<SampleOptions>(configuration, "   ");
+
+        // Assert
+        var ex = Should.Throw<ArgumentException>(act);
+        ex.ParamName.ShouldBe("sectionName");
+    }
+
+    /// <summary>
     /// The sample options class used for testing.
     /// </summary>
     public class SampleOptions
