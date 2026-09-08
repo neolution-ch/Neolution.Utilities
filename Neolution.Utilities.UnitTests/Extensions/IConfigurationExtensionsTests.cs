@@ -273,6 +273,62 @@ public class IConfigurationExtensionsTests
     }
 
     /// <summary>
+    /// Test that given the null configuration when get value with default called then throws argument null exception.
+    /// </summary>
+    [Fact]
+    public void GivenNullConfiguration_WhenGetValueWithDefaultCalled_ThenThrowsArgumentNullException()
+    {
+        // Arrange
+        IConfiguration? configuration = null;
+
+        // Act
+        var act = () => configuration!.GetValue<string, AppSettingKeys>(AppSettingKeys.TestStringKey, "fallback");
+
+        // Assert
+        var ex = Should.Throw<ArgumentNullException>(act);
+        ex.ParamName.ShouldBe("config");
+    }
+
+    /// <summary>
+    /// Test that given a missing key when get value with default called then returns the default value.
+    /// </summary>
+    [Fact]
+    public void GivenMissingKey_WhenGetValueWithDefaultCalled_ThenReturnsDefaultValue()
+    {
+        // Arrange
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection([])
+            .Build();
+
+        // Act
+        var value = configuration.GetValue<string, AppSettingKeys>(AppSettingKeys.TestStringKey, "fallback");
+
+        // Assert
+        value.ShouldBe("fallback");
+    }
+
+    /// <summary>
+    /// Test that given an existing key when get value with default called then returns configured value.
+    /// </summary>
+    [Fact]
+    public void GivenExistingKey_WhenGetValueWithDefaultCalled_ThenReturnsConfiguredValue()
+    {
+        // Arrange
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["TestIntKey"] = "7",
+            })
+            .Build();
+
+        // Act
+        var value = configuration.GetValue<int, AppSettingKeys>(AppSettingKeys.TestIntKey, 99);
+
+        // Assert
+        value.ShouldBe(7);
+    }
+
+    /// <summary>
     /// The sample options class used for testing.
     /// </summary>
     public class SampleOptions
