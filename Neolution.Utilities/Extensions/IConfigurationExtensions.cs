@@ -36,4 +36,35 @@ public static class IConfigurationExtensions
         ArgumentNullException.ThrowIfNull(config);
         return config.GetSection(typeof(T).Name);
     }
+
+    /// <summary>
+    /// Gets the value with the specified key.
+    /// </summary>
+    /// <typeparam name="T">The type of the value.</typeparam>
+    /// <typeparam name="TEnum">The type of the enum.</typeparam>
+    /// <param name="config">The configuration.</param>
+    /// <param name="key">The key.</param>
+    /// <returns>The value.</returns>
+    public static T? GetValue<T, TEnum>(this IConfiguration config, TEnum key)
+        where TEnum : struct, Enum
+    {
+        ArgumentNullException.ThrowIfNull(config);
+        return config.GetValue<T>(key.ToString());
+    }
+
+    /// <summary>
+    /// Gets the value with the specified key.
+    /// </summary>
+    /// <typeparam name="T">The type of the value.</typeparam>
+    /// <typeparam name="TEnum">The type of the enum.</typeparam>
+    /// <param name="config">The configuration.</param>
+    /// <param name="key">The key.</param>
+    /// <param name="defaultValue">The default value to use if no value is found.</param>
+    /// <returns>The value.</returns>
+    public static T GetValue<T, TEnum>(this IConfiguration config, TEnum key, T defaultValue)
+        where TEnum : struct, Enum
+    {
+        ArgumentNullException.ThrowIfNull(config);
+        return config.GetValue<T>(key.ToString(), defaultValue)!;
+    }
 }
