@@ -8,6 +8,22 @@ using Microsoft.Extensions.Configuration;
 public class IConfigurationExtensionsTests
 {
     /// <summary>
+    /// The same enum used for testing.
+    /// </summary>
+    public enum AppSettingKeys
+    {
+        /// <summary>
+        /// The test string key
+        /// </summary>
+        TestStringKey,
+
+        /// <summary>
+        /// The test int key
+        /// </summary>
+        TestIntKey,
+    }
+
+    /// <summary>
     /// Test that given the null configuration when get options called then throws argument null exception.
     /// </summary>
     [Fact]
@@ -213,6 +229,103 @@ public class IConfigurationExtensionsTests
         // Assert
         section.Key.ShouldBe("SampleOptions");
         section.Exists().ShouldBeFalse();
+    }
+
+    /// <summary>
+    /// Test that given the null configuration when get value called then throws argument null exception.
+    /// </summary>
+    [Fact]
+    public void GivenNullConfiguration_WhenGetValueCalled_ThenThrowsArgumentNullException()
+    {
+        // Arrange
+        IConfiguration? configuration = null;
+
+        // Act
+        var act = () => configuration!.GetValue<string, AppSettingKeys>(AppSettingKeys.TestStringKey);
+
+        // Assert
+        var ex = Should.Throw<ArgumentNullException>(act);
+        ex.ParamName.ShouldBe("config");
+    }
+
+    /// <summary>
+    /// Gets the value should return correct value when key exists.
+    /// </summary>
+    [Fact]
+    public void GivenConfigurationWithExistingKeys_WhenGetValueCalled_ThenReturnsValues()
+    {
+        // Arrange
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["TestStringKey"] = "TestValue",
+                ["TestIntKey"] = "7",
+            })
+            .Build();
+
+        // Act
+        var value = configuration.GetValue<string, AppSettingKeys>(AppSettingKeys.TestStringKey);
+        var intValue = configuration.GetValue<int, AppSettingKeys>(AppSettingKeys.TestIntKey);
+
+        // Assert
+        value.ShouldBe("TestValue");
+        intValue.ShouldBe(7);
+    }
+
+    /// <summary>
+    /// Test that given the null configuration when get value with default called then throws argument null exception.
+    /// </summary>
+    [Fact]
+    public void GivenNullConfiguration_WhenGetValueWithDefaultCalled_ThenThrowsArgumentNullException()
+    {
+        // Arrange
+        IConfiguration? configuration = null;
+
+        // Act
+        var act = () => configuration!.GetValue<string, AppSettingKeys>(AppSettingKeys.TestStringKey, "fallback");
+
+        // Assert
+        var ex = Should.Throw<ArgumentNullException>(act);
+        ex.ParamName.ShouldBe("config");
+    }
+
+    /// <summary>
+    /// Test that given a missing key when get value with default called then returns the default value.
+    /// </summary>
+    [Fact]
+    public void GivenMissingKey_WhenGetValueWithDefaultCalled_ThenReturnsDefaultValue()
+    {
+        // Arrange
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection([])
+            .Build();
+
+        // Act
+        var value = configuration.GetValue<string, AppSettingKeys>(AppSettingKeys.TestStringKey, "fallback");
+
+        // Assert
+        value.ShouldBe("fallback");
+    }
+
+    /// <summary>
+    /// Test that given an existing key when get value with default called then returns configured value.
+    /// </summary>
+    [Fact]
+    public void GivenExistingKey_WhenGetValueWithDefaultCalled_ThenReturnsConfiguredValue()
+    {
+        // Arrange
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["TestIntKey"] = "7",
+            })
+            .Build();
+
+        // Act
+        var value = configuration.GetValue<int, AppSettingKeys>(AppSettingKeys.TestIntKey, 99);
+
+        // Assert
+        value.ShouldBe(7);
     }
 
     /// <summary>
